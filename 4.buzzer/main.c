@@ -1,0 +1,27 @@
+#define GPD0CON (*(volatile unsigned long *)0xE02000A0)
+#define GPD0DAT (*(volatile unsigned long *)0xE02000A4)
+int main()
+{
+	GPD0CON |= 1<<0;
+	while(1)
+	{
+		buzzer_on();
+		delay(0x50000);
+		buzzer_off();
+		delay(0x50000);
+	}
+	return 0;	
+}
+void buzzer_on(void)
+{
+	GPD0DAT |= 1<<0;
+}
+void buzzer_off(void)
+{
+	GPD0DAT &=~(1<<0);
+}
+void delay(unsigned long count)
+{
+	volatile unsigned long i = count;
+	while(i--);
+}

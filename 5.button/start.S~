@@ -1,0 +1,7 @@
+.text
+.global _start
+_start:
+	bl main
+	b loop
+loop:
+	b loop

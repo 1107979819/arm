@@ -1,0 +1,17 @@
+#define GPJCON (*(volatile unsigned long *)0xE0200280)
+#define GPJDAT (*(volatile unsigned long *)0xE0200284)
+int main()
+{
+	unsigned long a=0x0000ffff；
+	GPJCON = 0x00001111;
+	GPJDAT = 0x00000000;
+	while(1)
+	{
+		while(a--)
+		{
+		}
+		GPJDAT = ~GPJDAT;
+		a=0x0000ffff；
+	}
+return 0;
+}
